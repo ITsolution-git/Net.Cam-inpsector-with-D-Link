@@ -1,0 +1,45 @@
+/*styles for home content only*/
+body
+{
+    margin: 0;    
+}
+
+.logo-login {
+    height: 80px;
+    margin-top: 10px;
+}
+
+.login-holder
+{
+    /*border:1px solid deeppink;*/
+    position: absolute;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    min-height: 460px;
+    padding:0;
+    margin:0;
+
+    display: flex;
+    justify-content: center;
+}
+
+.login-card {
+    /*border:1px solid darkorange;*/
+    position: relative;
+    width: 100%;
+    max-width: 475px;
+    height: 460px;
+
+    align-self: center;    
+
+    background-image: linear-gradient(rgb(245, 245, 245) 0%, rgb(230, 230, 230) 100%);
+    
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.form-width {
+    width: 70%;
+}

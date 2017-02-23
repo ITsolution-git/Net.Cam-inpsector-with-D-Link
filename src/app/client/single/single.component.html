@@ -1,0 +1,129 @@
+<div>
+    <md-card-header class="toolbar-div light-gray-div">
+        <md-select class="header-dropdown" placeholder="Source" [(ngModel)]="sourceId" (ngModelChange)="onSourceChange()">
+            <md-option *ngFor="let eachSrc of netcamService.videoSources" [value]="eachSrc.Id">
+                #{{ eachSrc.Id }} - {{ eachSrc.SourceName }}
+            </md-option>
+        </md-select>
+        <span class="spacer"></span>
+
+        <md-select class="header-dropdown" placeholder="Streaming Mode" [(ngModel)]="modeId" (ngModelChange)="onModeChange()">
+            <span *ngFor="let eachMode of modes">
+            <md-option [value]="eachMode.Id" *ngIf="eachMode.visible"> <!-- ngIf eachMode.visible doesn't work here -->
+                {{ eachMode.Id }}
+            </md-option>
+            </span>
+        </md-select>
+
+        <span class="spacer-right"></span>
+
+        <!--
+        <div>
+            <section>
+            <label></label>
+            <md-radio-group [(ngModel)]="modeId">
+                <md-radio-button value="JPEG">
+                JPEG
+                </md-radio-button>
+                <md-radio-button value="MJPEG">
+                MJPEG
+                </md-radio-button>
+                <md-radio-button value="Motion">
+                Motion
+                </md-radio-button>
+                <md-radio-button value="Live">
+                Live
+                </md-radio-button>
+            </md-radio-group>
+            </section>
+            <md-chip-list>
+                <md-chip>JPEG</md-chip>
+                <md-chip color='accent'>MJPEG</md-chip>
+                <md-chip color='primary'>Motion</md-chip>
+                <md-chip>Live</md-chip>
+            </md-chip-list>
+        </div>
+        -->
+    </md-card-header>
+
+    <div class="light-gray-div margin-bottom">
+
+        <!--
+        <md-tab-group>
+        <md-tab label="Tab 1">Content 1</md-tab>
+        <md-tab label="Tab 2">Content 2</md-tab>
+        </md-tab-group>
+        -->
+
+        <div class="dark-gray-div padding-5">
+            <img class="camera-image" src="{{cameraImage}}" (load)='onCameraImageLoaded()' (error)='onCameraImageError()' *ngIf="showCameraImage">
+            <div id="liveStream" class="live-stream" (click)="onPause()" *ngIf="!showCameraImage">
+                <video id="videojs" width="100%" class="video-js fullsizePlayer" controls preload="auto" poster="{{livePoster}}" data-setup="{}">
+                    <source src="{{liveStream}}" type="video/mp4">
+                    <source src="{{liveStream}}" type="video/webm">
+                    <source src="{{liveStream}}" type="video/ogg">
+                </video>
+            </div>
+        </div>
+        <!--
+        <div>
+            <md-grid-list cols="1" rowHeight="40px">
+                <md-grid-tile [colspan]="1" [rowspan]="1">
+                    <button md-button (click)="OnRec()"><i class="material-icons" [style.color]="RecIconColor">{{RecIcon}}</i></button>
+                    <button md-button (click)="OnMute()" [ngStyle]="mainAudioStyle"><i class="material-icons">{{MuteIcon}}</i></button>
+                </md-grid-tile>
+            </md-grid-list>            
+        </div>
+        -->
+    </div>
+
+    <md-grid-list cols="3" rowHeight="100px" class="light-gray-div margin-bottom">
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+            <md-slide-toggle [(ngModel)]="isMotion" (ngModelChange)="onMotion()">Motion Detector</md-slide-toggle>
+        </md-grid-tile>
+
+          <md-grid-tile [colspan]="1" [rowspan]="1">
+            <md-slide-toggle [(ngModel)]="isRecording" (ngModelChange)="onRecord()">Recording</md-slide-toggle>
+        </md-grid-tile>
+
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+            <md-slide-toggle [(ngModel)]="audioPlaying" (ngModelChange)="onMute()" *ngIf="hasAudio">Audio</md-slide-toggle>
+        </md-grid-tile>
+
+
+        <!--
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+            <button md-button (click)="onRecord()" [ngClass]="{'recording-button': isRecording }">
+                <i class="material-icons" *ngIf="isRecording">videocam</i>
+                <i class="material-icons" *ngIf="!isRecording">videocam_off</i>
+            </button>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+            <button md-button (click)="onMute()" *ngIf="hasAudio">
+                <i class="material-icons" *ngIf="audioPlaying">volume_up</i>
+                <i class="material-icons" *ngIf="!audioPlaying">volume_off</i>
+            </button>
+        </md-grid-tile>
+        -->
+
+    </md-grid-list>
+
+    <md-grid-list cols="2" rowHeight="200px" class="light-gray-div" *ngIf="hasPTZ">
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="panTiltPanel centered">
+                <button class="panTilt panTiltUp" (click)="onPTZ('Up')"><i class="material-icons">expand_less</i></button>
+                <button class="panTilt panTiltLeft" (click)="onPTZ('Left')"><i class="material-icons">chevron_left</i></button>
+                <button class="panTilt panTiltRight" (click)="onPTZ('Right')"><i class="material-icons">chevron_right</i></button>
+                <button class="panTilt panTiltDown" (click)="onPTZ('Down')"><i class="material-icons">expand_more</i></button>
+            </div>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="zoomPanel centered">
+                <span class="zoomButton zoomIn">+</span>
+                <button class="panTiltRed panTiltRedLeft" (click)="onPTZ('ZoomOut')"><i class="material-icons">chevron_left</i></button>
+                <button class="panTiltRed panTiltRedRight" (click)="onPTZ('ZoomIn')"><i class="material-icons">chevron_right</i></button>
+                <span class="zoomButton zoomOut">-</span>
+            </div>
+        </md-grid-tile>
+    </md-grid-list>
+</div>

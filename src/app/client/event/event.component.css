@@ -1,0 +1,18 @@
+/*styles for home content only*/
+
+.grid_desc {
+    font-size: 10px;
+}
+
+
+@media (min-width: 960px) {
+    .grid_desc {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid_desc {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,99 @@
+/*styles for timeline content only*/
+
+.timeline-image {
+    margin: auto;
+    display: table;
+    height: 100%
+}
+
+.no-border {
+    border: none !important;
+}
+
+
+ /*D3 JS Styles 
+
+.chart {
+    shape-rendering: crispEdges;
+}
+
+.mini text {
+    font: 9px sans-serif;
+}
+
+.main text {
+    font: 12px sans-serif;
+}
+
+.month text {
+    text-anchor: start;
+}
+
+.todayLine {
+    stroke: blue;
+    stroke-width: 1.5;
+}
+
+.axis line,
+.axis path {
+    stroke: black;
+}
+
+.miniItem {
+    stroke-width: 6;
+}
+
+.future {
+    stroke: gray;
+    fill: #ddd;
+}
+
+.past {
+    stroke: green;
+    fill: lightgreen;
+}
+
+.brush .extent {
+    stroke: gray;
+    fill: blue;
+    fill-opacity: .165;
+}
+
+/* Event Drops */
+
+/*.zoom {
+    fill: transparent;
+    cursor: pointer;
+}
+
+.y-axis path,
+.y-axis line,
+.x-axis path,
+.x-axis line,
+path,
+line {
+    stroke: black;
+    fill: none;
+    stroke-width: 1px;
+}
+
+.y-axis g line {
+    stroke: grey;
+    fill: none;
+    stroke-width: 1px;
+}
+
+.graph-body .line {
+    height: 20px;
+    padding: 10px;
+}*/
+
+/* d3 tooltip */
+
+/*rect {
+    fill: #46bcff;
+}
+
+rect.hover {
+    fill: #ff0000;
+}*/

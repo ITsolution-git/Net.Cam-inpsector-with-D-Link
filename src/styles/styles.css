@@ -1,0 +1,268 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+@import 'jquery.dataTables.css';
+@import 'materialize.light.css';
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(./roboto-regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(./material-icons.woff) format('woff');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+}
+
+/* end of material icons import */
+
+/* theme override */
+
+.primary-color {
+  color: #3F51B5!important;
+}
+.accent-color {
+  color: #FF4081!important;
+}
+.background-primary-color {
+  background-color: #3F51B5!important;
+}
+.background-accent-color {
+  background-color: #FF4081!important;
+}
+
+/* common/shared styles */
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.header-logo-image {
+    width: 133px;
+    margin-right: 20px;
+}
+
+.header-div
+{
+    margin-bottom: 20px;
+    /*border: 1px solid #e7e7e7;*/
+}
+.light-gray-div {
+  background-color: #f8f8f8;  
+  border: 1px solid #e7e7e7;  
+}
+
+.dark-gray-div {
+  background-color: #454545;
+  border: 1px solid #363636;  
+}
+
+.dark-gray-div md-grid-tile, .dark-gray-div .row .col {
+  /*background-color: #454545;*/
+  border: 1px solid #363636;
+}
+
+.dark-gray-div md-grid-tile img{
+  max-width: 98%;
+  max-height: 98%;
+}
+
+.padding-5 {
+  padding: 5px 
+}
+
+.min-300 {
+    min-height: 300px;
+}
+
+.toolbar-div {
+  height: 60px !important;
+}
+
+.header-dropdown {
+  margin-top: 18px;
+  width: 200px;    
+}
+
+.margin-bottom {
+    margin-bottom: 16px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.spacer-right {
+    width: 16px;    
+}
+
+.white-text {
+  color: #FFF!important;
+}
+
+.full-screen-backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+    transition: background-color .4s cubic-bezier(.25,.8,.25,1)
+}
+
+.full-screen-backdrop-image {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    margin: auto;
+    position: fixed;
+    max-width: 100%;
+    max-height: 100%;
+    /*border: 1px solid black;*/
+    border-radius: 2px;
+    z-index: 101;
+    /*transition: all .4s cubic-bezier(.25,.8,.25,1)*/
+}
+
+/* Tables related overrides */
+.ngTable table thead tr{
+    background-color: #454545;
+    /*background-color: deeppink;*/
+    color: white;
+}
+
+.ngTable .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #e7e7e7;
+}
+
+.bullet-debug {
+  color: lightgray;
+}
+
+.bullet-info {
+  color: green;
+}
+
+.bullet-warning {
+  color: darkorange;
+}
+
+.bullet-error, .bullet-critical {
+  color: red;
+}
+
+
+
+/*////////////////////////*/
+
+/* D3 JS Styles */
+
+.chart {
+    shape-rendering: crispEdges;
+}
+
+.mini text {
+    font: 9px sans-serif;
+}
+
+.main text {
+    font: 12px sans-serif;
+}
+
+.month text {
+    text-anchor: start;
+}
+
+.todayLine {
+    stroke: blue;
+    stroke-width: 1.5;
+}
+
+.axis line,
+.axis path {
+    stroke: black;
+}
+
+.miniItem {
+    stroke-width: 6;
+}
+
+.future {
+    stroke: gray;
+    fill: #ddd;
+}
+
+.past {
+    stroke: green;
+    fill: lightgreen;
+}
+
+.brush .extent {
+    stroke: gray;
+    fill: blue;
+    fill-opacity: .165;
+}
+
+/* Event Drops */
+
+.zoom {
+    fill: transparent;
+    cursor: pointer;
+}
+
+.y-axis path,
+.y-axis line,
+.x-axis path,
+.x-axis line,
+path,
+line {
+    stroke: black;
+    fill: none;
+    stroke-width: 1px;
+}
+
+.y-axis g line {
+    stroke: grey;
+    fill: none;
+    stroke-width: 1px;
+}
+
+.graph-body .line {
+    height: 20px;
+    padding: 10px;
+}
+
+/* d3 tooltip */
+
+rect {
+    fill: #46bcff;
+}
+
+rect.hover {
+    fill: #ff0000;
+}

@@ -1,0 +1,31 @@
+<div>
+    <md-card-header class="header-gray">
+        <div style="width: 200px;">
+        <md-select placeholder="Display" [(ngModel)]="selectedValue" class="header-dropdown" (ngModelChange)="onSelected()">
+            <md-option *ngFor="let Disp of DisplayList" [value]="Disp.value">
+                {{ Disp.status }}
+            </md-option>
+        </md-select>
+        </div>
+    </md-card-header>
+    <md-card-content class="content-gray">
+        <div class="User" [style.display]="IsUser">
+            <md-grid-list cols="23" rowHeight="40px">
+                <md-grid-tile *ngFor="let tile of lstUser" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color" class="user-border">
+                    <div class="center-layout"><img [src]="tile.icon">{{tile.text}}</div>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="Server" [style.display]="IsServer">
+            <md-grid-list cols="3" rowHeight="40px">
+                <md-grid-tile *ngFor="let status of lstStatus" [colspan]="status.cols" [rowspan]="status.rows" [style.background]="status.color">
+                    <div class="center-layout">{{status.text}}</div>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </md-card-content>
+    <!--
+    <md-card-actions>
+    </md-card-actions>
+    -->
+</div>

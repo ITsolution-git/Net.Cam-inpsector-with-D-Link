@@ -1,0 +1,63 @@
+<div class="login-holder">
+    <md-card class="login-card">
+        <md-card-title>
+            <md-grid-list cols="1" rowHeight="100px">
+                <md-grid-tile><img class="logo-login" sm-card-image src="./images/logo_login.png"></md-grid-tile>
+            </md-grid-list>
+        </md-card-title>
+
+        <md-card-content>
+            <md-grid-list cols="5" rowHeight="60px">
+                <md-grid-tile [colspan]="5" [rowspan]="1" *ngIf="isLocal">
+                </md-grid-tile>
+                <md-grid-tile [colspan]="5" [rowspan]="1" *ngIf="!isLocal">
+                    <md-input-container class="form-width">
+                        <input mdInput placeholder="Target Server" [(ngModel)]="serverInfo.host">
+                    </md-input-container>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="5" [rowspan]="1" *ngIf="!isLocal">
+                    <md-input-container class="form-width">
+                        <input mdInput placeholder="Port" [(ngModel)]="serverInfo.port">
+                    </md-input-container>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="5" [rowspan]="1">
+                    <md-input-container class="form-width">
+                        <input mdInput placeholder="Login" [(ngModel)]="serverInfo.username">
+                    </md-input-container>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="5" [rowspan]="1">
+                    <md-input-container class="form-width">
+                        <input mdInput placeholder="Password" [(ngModel)]="serverInfo.password" type="password">
+                    </md-input-container>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="5" [rowspan]="1" *ngIf="isLocal">
+                </md-grid-tile>
+            </md-grid-list>
+
+            <md-grid-list cols="6" rowHeight="40px">
+                <md-grid-tile [colspan]="1" [rowspan]="1">
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1">
+                     <md-checkbox [(ngModel)]="savePassword">Save Password</md-checkbox>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1">
+                    <md-checkbox [(ngModel)]="serverInfo.useHTTPS">Use HTTPS</md-checkbox>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="1" [rowspan]="1">
+                </md-grid-tile>
+            </md-grid-list>
+            
+            <md-grid-list cols="6" rowHeight="60px">
+                <md-grid-tile [colspan]="1" [rowspan]="1">
+                </md-grid-tile>
+                <md-grid-tile [colspan]="4" [rowspan]="1">
+                    <button (click)="Login($event)" md-raised-button [style.background]="'#337ab7'" [style.color]="'white'">Sign In</button>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="1" [rowspan]="1">
+                </md-grid-tile>
+            </md-grid-list>
+        </md-card-content>
+        <md-card-actions>
+        </md-card-actions>
+    </md-card>  
+</div>

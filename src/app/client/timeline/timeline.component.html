@@ -1,0 +1,19 @@
+<div>
+    <div class="light-gray-div margin-bottom">
+        <div id="ncs-timeline-preview" class="dim-back-padding" style="height:300px">
+            <img class='timeline-image' src='{{previewImage}}' *ngIf="previewImage != null"> 
+            <video id="{{ videoObjectId }}" class="vjs-tech timeline-image" preload="auto" poster="{{ videoPoster }}" controls autoplay *ngIf="videoPoster != null">
+                  <source src="{{ videoSource }}" type="video/mp4">
+            </video>
+        </div>            
+    </div>
+
+    <div class="light-gray-div margin-bottom">
+        <span *ngIf="timeStamp != undefined">Timestamp: {{ timeStamp }} <br/></span>
+        <span *ngIf="duration != undefined">Duration: {{ duration }} seconds  <br/></span>
+    </div>
+
+    <div class="light-gray-div">
+        <div id="ncs-timeline"></div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div>
+    <md-card-header class="toolbar-div light-gray-div">
+        <md-select class="header-dropdown" placeholder="Source" [(ngModel)]="sourceId" (ngModelChange)="onSourceChange()">
+            <md-option *ngFor="let eachSrc of videoSources" [value]="eachSrc.Id">
+                <span *ngIf="eachSrc.Id >= 0">
+                    #{{ eachSrc.Id }} - 
+                </span> {{ eachSrc.SourceName }}
+            </md-option>
+        </md-select>
+        
+        <md-select class="header-dropdown" placeholder="Columns" [(ngModel)]="numCol" (ngModelChange)="onSourceChange()">
+            <md-option *ngFor="let column of columnList" [value]="column">
+                {{ column }}
+            </md-option>
+        </md-select>
+
+        <span class="spacer"></span>
+
+        <div class="date-picker">
+            <div class="datepicker-input">
+                <div class="datepicker-input-title">Day</div>
+                <input class="datepicker-input-input" [(ngModel)]="startDate" (valueChanged)="onSourceChange()" date-format="YYYY-MM-DD"
+                    date-only="true" ng2-datetime-picker/>
+            </div>
+            <div class="datepicker-icon">
+                <i class="material-icons" style="cursor: pointer;" >date_range</i>
+            </div>
+        </div>
+        <!--
+        <div class="picker">
+            <div class="endpicker">
+                <div class="CalendarTitle">End Time</div>
+                <input class="CalendarInput" [(ngModel)]="endDate" (valueChanged)="onSelSrc()" date-only="true" date-format="YYYY-MM-DD" ng2-datetime-picker/>
+            </div>
+            <div class="CalendarIcon">
+                <i class="material-icons" style="cursor: pointer;" (valueChanged)="onSelEnd($event)" date-only="true" ng2-datetime-picker>date_range</i>
+            </div>
+        </div>
+        -->
+
+        <span class="spacer-right"></span>
+    </md-card-header>
+
+    <!--
+    <div class="row">
+    <div class="col s12">This div is 12-columns wide</div>
+    <div class="col s4">This div is 6-columns wide</div>
+    <div class="col s4">This div is 6-columns wide</div>
+    <div class="col s4">This div is 6-columns wide</div>
+    </div>        
+     -->    
+    <!-- encapsulating render + paging for refresh purposes ?? -->
+
+    <div class="light-gray-div margin-bottom min-300" *ngIf="netcamService.libraryItems == undefined || netcamService.libraryItems.length == 0">
+        <span>
+            No data to display for the selected period.
+        </span>
+    </div>
+
+    <div *ngIf="netcamService.libraryItems != undefined && netcamService.libraryItems.length > 0">
+        <div class="light-gray-div margin-bottom centered-content">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+
+        <div class="light-gray-div margin-bottom">
+            <div class="dark-gray-div">
+                <div class="row tile-row" *ngFor="let row of dataRows | paginate: { itemsPerPage: 10, currentPage: page }">
+                    <div class="col tile-container-parent" [style.width]="colWidth" *ngFor="let line of row">
+                        <div class="tile-container">
+                            <div class="tile-fullheight">
+                                <div class="tile-image-align">
+                                    <img class="tile-image" src="{{ netcamService.libraryItems[line].ImageUrl }}" (click)='onShowFullScreenVideoPlayer(netcamService.libraryItems[line].Id, netcamService.libraryItems[line].ImageUrl, netcamService.libraryItems[line].MovieUrl)'>
+                                </div>
+                            </div>
+                            <div class="tile-description">
+                                <p>{{ netcamService.libraryItems[line].TimeStampStr }}</p>
+                                <p>
+                                    # {{ netcamService.libraryItems[line].SourceId }} - {{ (netcamService.libraryItems[line].Duration / 1000).toFixed(2) }} s
+                                    <!--
+                                    <a [href]="netcamService.libraryItems[line].MovieUrl" class="download-link">
+                                        [DOWNLOAD]                                      
+                                    </a>
+                                    -->
+                                </p>                                   
+                            </div>                                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="light-gray-div margin-bottom centered-content">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+    </div>
+
+
+</div>

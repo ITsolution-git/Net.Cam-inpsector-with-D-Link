@@ -1,0 +1,257 @@
+<div (click)="onDefocus($event)">    
+    <md-card-header class="toolbar-div light-gray-div">      
+            <div class="frontmost margin-top">
+                <div>
+                    <img class="for-select" [src]="selectedModeImage" (click)="onOpenPopup()">
+                </div>
+                <div class="popupMenu" *ngIf="showDisplayPopup">
+                    <div>
+                        <img [src]="ModeImages[0].imageUrl" (click)="onDisplayModeChange(0)">
+                        <img class="popupImage" [src]="ModeImages[1].imageUrl" (click)="onDisplayModeChange(1)">
+                    </div>
+                    <div>
+                        <img [src]="ModeImages[2].imageUrl" (click)="onDisplayModeChange(2)">
+                        <img class="popupImage" [src]="ModeImages[3].imageUrl" (click)="onDisplayModeChange(3)">
+                    </div>
+                    <div>
+                        <img [src]="ModeImages[4].imageUrl" (click)="onDisplayModeChange(4)">
+                        <img class="popupImage" [src]="ModeImages[5].imageUrl" (click)="onDisplayModeChange(5)">
+                    </div>
+                    <div>
+                        <img [src]="ModeImages[6].imageUrl" (click)="onDisplayModeChange(6)">
+                        <img class="popupImage" [src]="ModeImages[7].imageUrl" (click)="onDisplayModeChange(7)">
+                    </div>
+                    <div>
+                        <img [src]="ModeImages[8].imageUrl" (click)="onDisplayModeChange(8)">
+                        <img class="popupImage" [src]="ModeImages[9].imageUrl" (click)="onDisplayModeChange(9)">
+                    </div>
+                </div>
+            </div>
+            <span class="spacer"></span>
+            <div class="margin-top">
+                <button md-button class="navi-button" [disabled]="!isPrev" md-button (click)="onPrev()">Previous</button>
+                <button md-button class="navi-button" [disabled]="!isNext" md-button (click)="onNext()">Next</button>
+            </div>            
+            <span class="spacer-right"></span>
+    </md-card-header>
+
+    <div class="light-gray-div margin-bottom">
+        <div class="dark-gray-div" *ngIf="displayMode == 0">
+            <md-grid-list cols="2" md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(0)'>
+                    <img class="camera-image" src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 1">
+            <md-grid-list cols="4" md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(0)'>
+                    <img class="camera-image" src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div"  *ngIf="displayMode == 2">
+            <md-grid-list cols="6" md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(0)'>
+                    <img class="camera-image" src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(2)'>
+                    <img class="camera-image" src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'> 
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 3">
+            <md-grid-list cols="4" md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(0)'>
+                    <img class="camera-image" src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(2)'>
+                    <img class="camera-image" src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(3)'>
+                    <img class="camera-image" src="{{cameraImages[3]}}" (load)='onCameraImageLoaded(3)' (error)='onCameraImageError(3)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 4">
+            <md-grid-list cols="6" md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(0)'>
+                    <img class="camera-image" src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(2)'>
+                    <img class="camera-image" src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(3)'>
+                    <img class="camera-image" src="{{cameraImages[3]}}" (load)='onCameraImageLoaded(3)' (error)='onCameraImageError(3)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(4)'>
+                    <img class="camera-image" src="{{cameraImages[4]}}" (load)='onCameraImageLoaded(4)' (error)='onCameraImageError(4)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(5)'>
+                    <img class="camera-image" src="{{cameraImages[5]}}" (load)='onCameraImageLoaded(5)' (error)='onCameraImageError(5)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 5">
+            <md-grid-list cols="8 " md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1 " (click)='onZoom(0)'>
+                    <img class="camera-image" src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(2)'>
+                    <img class="camera-image" src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(3)'>
+                    <img class="camera-image" src="{{cameraImages[3]}}" (load)='onCameraImageLoaded(3)' (error)='onCameraImageError(3)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(4)'>
+                    <img class="camera-image" src="{{cameraImages[4]}}" (load)='onCameraImageLoaded(4)' (error)='onCameraImageError(4)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(5)'>
+                    <img class="camera-image" src="{{cameraImages[5]}}" (load)='onCameraImageLoaded(5)' (error)='onCameraImageError(5)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(6)'>
+                    <img class="camera-image" src="{{cameraImages[6]}}" (load)='onCameraImageLoaded(6)' (error)='onCameraImageError(6)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(7)'>
+                    <img class="camera-image" src="{{cameraImages[7]}}" (load)='onCameraImageLoaded(7)' (error)='onCameraImageError(7)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 6">
+            <md-grid-list cols="6 " md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(0)'>
+                    <img class="camera-image" src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(2)'>
+                    <img class="camera-image" src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(3)'>
+                    <img class="camera-image" src="{{cameraImages[3]}}" (load)='onCameraImageLoaded(3)' (error)='onCameraImageError(3)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(4)'>
+                    <img class="camera-image" src="{{cameraImages[4]}}" (load)='onCameraImageLoaded(4)' (error)='onCameraImageError(4)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(5)'>
+                    <img class="camera-image" src="{{cameraImages[5]}}" (load)='onCameraImageLoaded(5)' (error)='onCameraImageError(5)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(6)'>
+                    <img class="camera-image" src="{{cameraImages[6]}}" (load)='onCameraImageLoaded(6)' (error)='onCameraImageError(6)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(7)'>
+                    <img class="camera-image" src="{{cameraImages[7]}}" (load)='onCameraImageLoaded(7)' (error)='onCameraImageError(7)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(8)'>
+                    <img class="camera-image" src="{{cameraImages[8]}}" (load)='onCameraImageLoaded(8)' (error)='onCameraImageError(8)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 7">
+            <md-grid-list cols="8" md-row-height="fit">
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(0)'>
+                    <img class="camera-image " src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(2)'>
+                    <img class="camera-image " src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(3)'>
+                    <img class="camera-image" src="{{cameraImages[3]}}" (load)='onCameraImageLoaded(3)' (error)='onCameraImageError(3)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(4)'>
+                    <img class="camera-image" src="{{cameraImages[4]}}" (load)='onCameraImageLoaded(4)' (error)='onCameraImageError(4)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(5)'>
+                    <img class="camera-image" src="{{cameraImages[5]}}" (load)='onCameraImageLoaded(5)' (error)='onCameraImageError(5)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(6)'>
+                    <img class="camera-image" src="{{cameraImages[6]}}" (load)='onCameraImageLoaded(6)' (error)='onCameraImageError(6)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(7)'>
+                    <img class="camera-image" src="{{cameraImages[7]}}" (load)='onCameraImageLoaded(7)' (error)='onCameraImageError(7)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(8)'>
+                    <img class="camera-image" src="{{cameraImages[8]}}" (load)='onCameraImageLoaded(8)' (error)='onCameraImageError(8)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(9)'>
+                    <img class="camera-image" src="{{cameraImages[9]}}" (load)='onCameraImageLoaded(9)' (error)='onCameraImageError(9)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(10)'>
+                    <img class="camera-image" src="{{cameraImages[10]}} " (load)='onCameraImageLoaded(10)' (error)='onCameraImageError(10)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(11)'>
+                    <img class="camera-image" src="{{cameraImages[11]}}" (load)='onCameraImageLoaded(11)' (error)='onCameraImageError(11)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 8">
+            <md-grid-list cols="6" md-row-height="fit">
+                <md-grid-tile [colspan]="4" [rowspan]="2" (click)='onZoom(0)'>
+                    <img class="camera-image " src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image" src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1 " (click)='onZoom(2)'>
+                    <img class="camera-image " src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(5)'>
+                    <img class="camera-image" src="{{cameraImages[5]}}" (load)='onCameraImageLoaded(5)' (error)='onCameraImageError(5)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(4)'>
+                    <img class="camera-image " src="{{cameraImages[4]}} " (load)='onCameraImageLoaded(4)' (error)='onCameraImageError(4)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(3)'>
+                    <img class="camera-image" src="{{cameraImages[3]}}" (load)='onCameraImageLoaded(3)' (error)='onCameraImageError(3)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <div class="dark-gray-div" *ngIf="displayMode == 9">
+            <md-grid-list cols="8" md-row-height="fit">
+                <md-grid-tile [colspan]="6" [rowspan]="3" (click)='onZoom(0)'>
+                    <img class="camera-image " src="{{cameraImages[0]}}" (load)='onCameraImageLoaded(0)' (error)='onCameraImageError(0)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(1)'>
+                    <img class="camera-image " src="{{cameraImages[1]}}" (load)='onCameraImageLoaded(1)' (error)='onCameraImageError(1)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(2)'>
+                    <img class="camera-image " src="{{cameraImages[2]}}" (load)='onCameraImageLoaded(2)' (error)='onCameraImageError(2)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(3)'>
+                    <img class="camera-image " src="{{cameraImages[3]}}" (load)='onCameraImageLoaded(3)' (error)='onCameraImageError(3)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(7)'>
+                    <img class="camera-image " src="{{cameraImages[7]}}" (load)='onCameraImageLoaded(7)' (error)='onCameraImageError(7)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(6)'>
+                    <img class="camera-image " src="{{cameraImages[6]}}" (load)='onCameraImageLoaded(6)' (error)='onCameraImageError(6)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(5)'>
+                    <img class="camera-image " src="{{cameraImages[5]}}" (load)='onCameraImageLoaded(5)' (error)='onCameraImageError(5)'>
+                </md-grid-tile>
+                <md-grid-tile [colspan]="2" [rowspan]="1" (click)='onZoom(4)'>
+                    <img class="camera-image" src="{{cameraImages[4]}}" (load)='onCameraImageLoaded(4)' (error)='onCameraImageError(4)'>
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+    </div>
+</div>

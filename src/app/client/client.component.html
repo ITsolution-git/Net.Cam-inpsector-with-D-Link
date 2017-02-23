@@ -1,0 +1,74 @@
+<md-sidenav-container class="sidenav-container">
+    <md-sidenav #sidenav class="sidenav-menu">
+        <img src="./images/logo_menu.png" class="sidenav-logo">
+
+        <md-nav-list>
+            <!--<md-list-item>
+                <a md-line routerLink="./">Home</a>-->
+                <!--<button md-icon-button>
+                    <md-icon>info</md-icon>
+                 </button>-->
+            <!--</md-list-item>-->
+            <h3 md-subheader>Live</h3>
+            <md-list-item (click)="navigateTo('client/single'); sidenav.close();">
+                <a md-line routerLink="./single" (click)="sidenav.close()">Single View</a>    <!-- (click)="navigateTo('client/single')" -->
+            </md-list-item>
+            <md-list-item (click)="navigateTo('client/multi'); sidenav.close();">
+                <a md-line routerLink="./multi" (click)="sidenav.close()">Multi View</a>                
+            </md-list-item>
+            <h3 md-subheader (click)="navigateTo('client/gallery'); sidenav.close();">Library</h3>
+            <md-list-item>
+                <a md-line routerLink="./gallery" (click)="sidenav.close()">Gallery</a>
+            </md-list-item>
+            <md-list-item (click)="navigateTo('client/timeline'); sidenav.close();">
+                <a md-line routerLink="./timeline" (click)="sidenav.close()">Timeline</a>                
+            </md-list-item>  
+            <h3 md-subheader>System</h3>     
+            <md-list-item (click)="navigateTo('client/event'); sidenav.close();">
+                <a md-line routerLink="./event" (click)="sidenav.close()">Event Viewer</a>                
+            </md-list-item>       
+            <md-list-item (click)="navigateTo('client/admin'); sidenav.close();">
+                <a md-line routerLink="./admin" (click)="sidenav.close()">Administration</a>                
+            </md-list-item>  
+            <md-divider></md-divider>          
+            <md-list-item (click)="onLogout()">
+                <a md-line (click)="onLogout()">Log Out</a>                
+            </md-list-item> 
+        </md-nav-list>
+
+    </md-sidenav>
+
+    <div class="sidenav-content">
+        <md-toolbar class="header-div light-gray-div">            
+            <button md-icon-button (click)="sidenav.open()">
+                <md-icon>menu</md-icon>
+            </button>
+            <span class="spacer"></span>            
+            <img src="./images/logo_menu.png" class="header-logo-image">            
+        </md-toolbar>
+
+        <!--<header-component></header-component>-->
+        <router-outlet></router-outlet>
+        <footer-component></footer-component>
+    </div>
+</md-sidenav-container>
+
+<!-- Full Screen Live for MULTI-COMPONENT -->
+<div id="full-screen-stream" (click)='onHideFullScreenStream()' *ngIf="fullScreenVisible">
+    <div class="full-screen-backdrop"></div>
+    <img class="full-screen-backdrop-image" src="{{ fullScreenImage }}" (load)='onFullScreenImageLoaded()' (error)='onFullScreenImageError()'>
+</div>
+
+<!-- Full Screen Player for GALLERY-COMPONENT -->
+<div *ngIf="videoPlayerVisible">
+    <div class="full-screen-backdrop" (click)='onHideFullScreenVideoPlayer()'></div>
+    <video id="videojs" autoplay controls class="video-js full-screen-backdrop-image" preload="auto" poster="{{ videoPlayerPoster }}"
+        data-setup="{}" (click)='onPauseFullScreenVideoPlayer()'>
+        <source src='{{ videoPlayerMovieUrl }}' type="video/mp4">
+        <!--
+        <source src='{{ videoPlayerMovieUrl }}' type="video/webm">
+        <source src='{{ videoPlayerMovieUrl }}' type="video/ogg">
+        -->
+        </video>
+        <img src="./images/close.png" class="close-button" tabindex="101" (click)='onHideFullScreenVideoPlayer()'>
+</div>

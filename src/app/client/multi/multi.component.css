@@ -1,0 +1,30 @@
+/*styles for home content only*/
+
+.popupImage {
+    margin-left: -4px;
+}
+
+.popupMenu>div {
+    margin-top: -4px;
+}
+
+.navi-button {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: white;
+    margin-left: 5px;
+    border-radius: 4px;
+}
+
+.camera-image {
+    border-radius: 2px;
+}
+
+.frontmost{
+    z-index: 5;
+}
+
+.margin-top
+{
+    margin-top: 10px;
+}

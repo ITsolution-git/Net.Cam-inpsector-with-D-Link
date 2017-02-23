@@ -1,0 +1,58 @@
+<md-toolbar class="header-div light-gray-div">
+      <img src="./images/logo_menu.png" class = "header-logo-image">
+      <button md-button [mdMenuTriggerFor]="mdView">
+          <span>View</span>
+          <md-icon>arrow_drop_down</md-icon>
+      </button>
+      <md-menu #mdView="mdMenu">
+          <button md-menu-item routerLink="./single">Single View</button>
+          <button md-menu-item routerLink="/client/multi">Multi View</button>
+      </md-menu>
+      <button md-button [mdMenuTriggerFor]="mdLib">
+          <span>Library</span>
+          <md-icon>arrow_drop_down</md-icon>
+      </button>
+      <md-menu #mdLib="mdMenu">
+          <button md-menu-item routerLink="./gallery">Gallery</button>
+          <button md-menu-item routerLink="./timeline">Timeline</button>
+      </md-menu>
+      <div><button md-button routerLink="./event">Event Viewer</button></div>
+      <div><button md-button routerLink="./admin">Administration</button></div>
+      <span class="spacer"></span>
+      <div><button md-button (click)="Logout()" style="border: 1px solid #ccc; border-radius: 4px;">Log Out</button></div>      
+</md-toolbar>
+
+<!--
+ <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/login">Home</a></li>
+                    <li class="breadcrumb-item active">Courses</li>
+                </ol>
+                <div class="jumbotron">
+                    <h1>Course Categories!</h1>
+                    <p>This is a list of course categories, click on each to see a list of courses for a given category.</p>
+                </div>
+                <router-outlet></router-outlet>
+            </div>
+            <router-outlet name="sidemenu"></router-outlet>
+        </div>
+    </div>
+    -->
+
+
+<!--
+<md-sidenav-container class="example-container">
+  <md-sidenav #sidenav class="example-sidenav">
+    Jolly good!
+  </md-sidenav>
+
+  <div class="example-sidenav-content">
+    <button md-button (click)="sidenav.open()">
+      Open sidenav
+    </button>
+  </div>
+
+</md-sidenav-container>
+-->

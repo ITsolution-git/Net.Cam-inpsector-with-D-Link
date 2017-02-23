@@ -1,0 +1,13 @@
+/*styles for home content only*/
+.center-layout {
+    text-align: center;
+}
+
+.custom-admin-header {
+    width: 250px;
+    margin-top: 10px;
+}
+
+.user-border {
+    border: 1px solid #ddd;
+}

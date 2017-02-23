@@ -1,0 +1,58 @@
+<div>
+    <md-card-header class="toolbar-div light-gray-div">
+        <!--
+        <div>
+            <md-select placeholder="Display" [(ngModel)]="numDisplay" class="header-dropdown" (ngModelChange)="onUpdate()">
+                <md-option *ngFor="let eachDisp of displayEnum" [value]="eachDisp"> 
+                    {{ eachDisp }}
+                </md-option>
+            </md-select>
+        </div>
+
+        <span class="spacer"></span>
+        -->
+
+        <md-select placeholder="Criticality" [(ngModel)]="CriticalityValue" class="header-dropdown" (ngModelChange)="onUpdate()">
+            <md-option *ngFor="let eachCri of Criticality" [value]="eachCri.value">
+                {{ eachCri.status }}
+            </md-option>
+        </md-select>
+
+        <!--<span class="spacer-right"></span>-->
+    </md-card-header>
+    
+    <div class="light-gray-div">
+
+        <!--(cellClicked)="onCellClick($event)"-->
+        <ng-table [config]="config"
+          (tableChanged)="onChangeTable(config)"          
+          [rows]="rows" 
+          [columns]="columns"
+          class="ngTable">
+        </ng-table>
+
+        <!--
+        <pagination *ngIf="config.paging"
+                    class="pagination-sm"
+                    [(ngModel)]="page"
+                    [totalItems]="length"
+                    [itemsPerPage]="itemsPerPage"
+                    [maxSize]="maxSize"
+                    [boundaryLinks]="true"
+                    [rotate]="false"
+                    (pageChanged)="onChangeTable(config, $event)"
+                    (numPages)="numPages = $event">
+        </pagination>
+        -->
+
+        <!--<md-grid-list cols="35" rowHeight="50px">
+            <md-grid-tile colspan="event.cols" [rowspan]="event.rows" [style.background]="event.color" class="grid_desc">
+                <div class="full-width center-text"><i class="material-icons" [style.color]="user.icolor">{{user.icon}}</i>{{user.text}}</div>
+            </md-grid-tile>
+
+            <md-grid-tile *ngFor="let event of netcamService.eventLogs" [colspan]="event.cols" [rowspan]="event.rows" [style.background]="event.color" class="grid_desc">
+                <div class="full-width center-text"><i class="material-icons" [style.color]="user.icolor">{{user.icon}}</i>{{user.text}}</div>
+            </md-grid-tile>
+        </md-grid-list>-->
+    </div>
+</div>
